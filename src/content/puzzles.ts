@@ -184,7 +184,7 @@ export const puzzles: Puzzle[] = [
         true,
       ),
     ],
-    inputType: "text",
+    inputType: "composite",
     fields: [
       {
         id: "year",
@@ -198,7 +198,7 @@ export const puzzles: Puzzle[] = [
       },
       {
         id: "location",
-        label: "Where is the author writing from?",
+        label: "Where is the sender writing from?",
         placeholder: "Where?",
       },
     ],
@@ -207,7 +207,7 @@ export const puzzles: Puzzle[] = [
       fields: [
         { id: "year", label: "What year is the message from?" },
         { id: "condition", label: "What happened to the message?" },
-        { id: "location", label: "Where is the author writing from?" },
+        { id: "location", label: "Where is the sender writing from?" },
       ],
       acceptedCombinations: [
         {
@@ -239,12 +239,12 @@ export const puzzles: Puzzle[] = [
   {
     id: "lesson",
     step: 2,
-    title: "The Forgotten Lesson",
-    subtitle: "An attachment from the beginning",
+    title: "The Hidden Clue",
+    subtitle: "An attachment from the email got through",
     narrative:
-      "The recovered email included one attachment. Its filename is ordinary. Its image is not. The archive places it BYU circa 2041. What knew information will we learn from it?",
+      "The recovered email included one attachment. Its filename is ordinary. Its image is not. Initial forensics places it BYU Provo campus circa 2041. What is the message that C is trying to send?",
     instructions:
-      "Download the PNG attachment and upload it ChatGPT. Ask AI to inspect the entire image and look for the hidden message. What phrase is hidden in the image?",
+      "Is this the only way that C could get his message past the AI security system? What is the message C is trying to send to you?",
     capability: "CHAT / IMAGE UNDERSTANDING",
     transmission: "EMAIL ATTACHMENT RECOVERED // CES ALL HANDS // 2026",
     resources: [
@@ -252,11 +252,11 @@ export const puzzles: Puzzle[] = [
         id: "designer-attachment",
         kind: "image",
         label: "EMAIL ATTACHMENT",
-        title: "BYU Circa 2041",
+        title: "BYU circa 2041",
         body: "An email attachment from the mysterious \"C\". Download the original file and see if AI can help you find the hidden clue.",
         meta: "PNG // SOURCE: C // UNVERIFIED",
         imageSrc: designerAttachment,
-        downloadName: "Designer 3.08.16 PM.png",
+        downloadName: "email_attachment_2041",
       },
     ],
     inputType: "text",
@@ -267,18 +267,18 @@ export const puzzles: Puzzle[] = [
     hints: [
       {
         title: "Download the attachment",
-        body: "Use the download control on the image resource so you can upload the original PNG to your chatbot.",
+        body: "Use the download control on the image resource so you can upload the original PNG to ChatGPT.",
       },
       {
         title: "Inspect the whole image",
         body: "Ask AI to examine the sky and clouds as carefully as the buildings and foreground.",
       },
-      { title: "The phrase", body: "Submit: LOG IN TO LMS." },
+      { title: "The phrase", body: "Its hidden in the clouds.  LOG IN TO LMS." },
     ],
     successMessage:
-      "The image gives you a way into the next layer of the archive. Whatever happened in 2026, someone expected the LMS to contain part of the answer.",
+      "The image gives you a clue about where to go next. Whatever happened in 2026, C's investigation expected the LMS to contain part of the answer.",
     archiveEntry: archives[1],
-    nextStage: "The archive has located an LMS access point.",
+    nextStage: "We've located some admin credentials to login to the LMS.",
   },
   {
     id: "cosmo",
@@ -286,9 +286,9 @@ export const puzzles: Puzzle[] = [
     title: "The Bot Detection",
     subtitle: "A picture is worth an access token",
     narrative:
-      "The phrase opens an old LMS gateway. The forensics team recovered the login credentials, but the system is protected by a futuristic bot-detection protocol. It does not ask you to identify traffic lights. It asks for proof that you can be trusted.",
+      "The login works and gets us in to the LMS, but the system is protected by a futuristic bot-detection protocol. It does not ask you to identify traffic lights. It asks for proof that you can be trusted.",
     instructions:
-      "Use an image-generation tool to create a cute puppy using the prompt below. Upload the generated image to the security gate. The archive will analyze it briefly, then allow you to continue to the LMS.",
+      "Use an image-generation tool to create a cute puppy using the prompt below. Upload the generated image to the security gate. The bot-detection system will analyze it to determine if you can be trusted, then hopefully let you in to the LMS.",
     capability: "IMAGE GENERATION / PROMPTING",
     transmission: "LMS GATEWAY // BOT DETECTION // ACCESS PENDING",
     resources: [
@@ -313,22 +313,22 @@ export const puzzles: Puzzle[] = [
         title: "Upload the result",
         body: "Choose the generated image with the upload control. The security system will inspect it for a moment.",
       },
-      { title: "The gate opens", body: "Once the check finishes, select CONTINUE TO LMS." },
+      { title: "The gate opens", body: "Once the check finishes, the match confirmation appears and you can continue to the next challenge." },
     ],
     successMessage:
       "The security layer pauses, then accepts the image. It may be the first system in the archive to trust a puppy.",
     archiveEntry: archives[2],
-    nextStage: "The LMS has released a student performance export.",
+    nextStage: "The LMS houses data relating to the student performance.",
   },
   {
     id: "student",
     step: 4,
     title: "The Gradebook",
-    subtitle: "A perfect trend inside the LMS",
+    subtitle: "The LMS has data that could lead you to answers",
     narrative:
-      "The puppy gets you through the gate. Inside the LMS, one dataset spans fifteen years of student grades. The rows are ordinary. The direction is not.",
+      "The puppy gets you through the gate. Inside the LMS, one dataset spans fifteen years of student grades. You've seen this before, but what is it about this data that makes it so important to the future of CES?",
     instructions:
-      "Download the CSV dataset and upload it to ChatGPT. Ask it to examine the data for trends across years, terms, and courses, and to explain what those trends might suggest. Then answer the archive question below.",
+      "Download the CSV dataset and see what you can find out. What is going on with student grades for the next 15 years?",
     responsePrompt:
       "What do you notice about the student grades? What is the most important conclusion from the data?",
     capability: "WORK / SPREADSHEET ANALYSIS",
@@ -339,7 +339,7 @@ export const puzzles: Puzzle[] = [
         kind: "data",
         label: "LMS DATASET",
         title: "College grades // 2025–2040",
-        body: "A downloadable grade export containing student results across fifteen years. The archive has not supplied a conclusion.",
+        body: "A downloadable grade export containing student results across fifteen years. The LMS archive has not supplied a conclusion.",
         meta: "CSV // 3,200 ROWS // LMS EXPORT",
         downloadSrc: gradesDataset,
         downloadName: "college_grades_2025_2040.csv",
@@ -360,7 +360,7 @@ export const puzzles: Puzzle[] = [
       },
       {
         title: "Ask about the trend",
-        body: "Ask ChatGPT to calculate yearly averages, compare courses, and identify the direction of change. Let it show its work.",
+        body: "Ask ChatGPT to analyze the data and identify the direction of change. What direction are the grades moving?",
       },
       {
         title: "The conclusion",
@@ -368,7 +368,7 @@ export const puzzles: Puzzle[] = [
       },
     ],
     successMessage:
-      "The gradebook points in one direction: up. Isn't that a great thing? Maybe its too good to be true?",
+      "C guided us to find this dataset. The grades are rising, why is that a clue? Isn't that a great thing?",
     archiveEntry: archives[3],
     nextStage: "The grades look better every year. Is that measuring the right thing?",
   },
@@ -378,9 +378,9 @@ export const puzzles: Puzzle[] = [
     title: "The Instructor’s Notes",
     subtitle: "A pattern hidden in ordinary entries",
     narrative:
-      "The rising grades were an important clue. You are about to log off the LMS when a button catches your eye: INSTRUCTOR NOTES. Inside is a professor’s study journal exported as raw JSON.",
+      "You are about to log off the LMS when a button catches your eye: INSTRUCTOR NOTES. Inside is a professor’s study journal exported as raw JSON.",
     instructions:
-      "Download the JSON file and upload it to ChatGPT. Ask it to group the entries by mood and count how many entries have each mood. Identify the professor’s most common mood, then submit the number of entries with that mood as the code.",
+      "C seems to be leading us to these artifcats, what can we learn from the teacher? The study journal likely contains thoughts and feelings about the lessons, students, and other things that could lead us to the cause of the 2041 catastrophe. Use this file for your next clue.",
     responsePrompt:
       "What is the professor’s most common mood, and how many entries have that mood? Enter the count as the code.",
     capability: "WORK / STRUCTURED DATA ANALYSIS",
@@ -391,7 +391,7 @@ export const puzzles: Puzzle[] = [
         kind: "data",
         label: "INSTRUCTOR NOTES",
         title: "Professor study journal // JSON",
-        body: "A raw export of Professor Elaine Hart’s research and teaching notes. Download the file and ask AI to count the entries by mood.",
+        body: "A raw export of Professor Elaine Hart’s research and teaching notes. What clues are hidden within?",
         meta: "JSON // 200 ENTRIES // LMS EXPORT",
         downloadSrc: professorStudyJournal,
         downloadName: "professor_study_journal.json",
@@ -474,9 +474,9 @@ export const puzzles: Puzzle[] = [
     title: "Build the Missing Piece",
     subtitle: "Three people, three kinds of work",
     narrative:
-      "C has answered with a new request: build something useful enough that another person can carry it forward. No one campus has the right format for every need.",
+      "C has answered with a new request: the archive needs a small human-centered AI toolkit, not another abstract conclusion. Each campus will turn its local fragment into one practical file another person can use.",
     instructions:
-      "Use ChatGPT Work to collaborate with two people from outside your campus. Include all three people in the shared work, use each campus’s local fragment, and create the deliverable assigned to each campus below. Then enter the name, campus, and file type for all three people in your group. The campus and file type must match exactly.",
+      "Use ChatGPT Work to collaborate with two people from outside your campus. Bring all three local fragments into the shared work, complete the campus-specific assignments below, and make each file part of C’s human-centered AI toolkit. Then enter the name, campus, and file type for all three people in your group. The campus and file type must match exactly.",
     responsePrompt:
       "Record the three people in your group, including yourself and the two people from another campus.",
     capability: "WORK / COLLABORATION / FILE CREATION",
@@ -487,16 +487,43 @@ export const puzzles: Puzzle[] = [
         id: "cross-note",
         kind: "fragment",
         label: "WORKSPACE DIRECTIVE",
-        title: "Make the evidence usable",
-        body: "Bring three campus perspectives into one ChatGPT Work conversation. The goal is not to make the campuses identical. The goal is to give C something another person can use.",
+        title: "Build C’s toolkit",
+        body: "The future does not need six more summaries. It needs six simple things people can use: a slide, a guide, a dataset, a handout, a visual, and an invitation. Your campus has one fragment and one assignment. Build your piece with the others, and leave room for human judgment.",
         meta: "C // 2041.10.05",
       },
     ],
-    institutionVariants: Object.entries(INSTITUTION_FILE_TYPES).map(([institution, fileType]) => ({
-      institution: institution as Institution,
-      label: `ASSIGNED DELIVERABLE // ${institution}`,
-      body: `This campus creates a ${fileType}. Use ChatGPT Work to make the file useful, specific, and ready to share.`,
-    })),
+    institutionVariants: [
+      {
+        institution: "BYU",
+        label: "CAMPUS ASSIGNMENT // PROVO",
+        body: "Use ChatGPT Work to build a PowerPoint slide about the pros and cons of using AI in the classroom. Use the Provo fragment as one source. C needs a quick visual briefing that makes both the benefit and the office-hour tradeoff visible.",
+      },
+      {
+        institution: "BYU–Idaho",
+        label: "CAMPUS ASSIGNMENT // REXBURG",
+        body: "Use ChatGPT Work to create a Word document with three guidelines for using AI while keeping students responsible for their own thinking. Use the Rexburg fragment as one source. C needs a practical guide that keeps revision in the learning process.",
+      },
+      {
+        institution: "BYU–Hawaii",
+        label: "CAMPUS ASSIGNMENT // LAIE",
+        body: "Use ChatGPT Work to create a fictional Excel spreadsheet with example student data comparing AI use, test scores, and demonstrated understanding. Include a chart and clearly label the data as synthetic. C needs an example of how improved access and higher scores may still leave understanding uncertain.",
+      },
+      {
+        institution: "Ensign College",
+        label: "CAMPUS ASSIGNMENT // SALT LAKE",
+        body: "Use ChatGPT Work to create a one-page PDF explaining why completing an assignment is not the same as learning. Include two questions an instructor can ask. C needs a handout for recognizing work that is finished but thin.",
+      },
+      {
+        institution: "BYU-Pathway",
+        label: "CAMPUS ASSIGNMENT // ONLINE",
+        body: "Use ChatGPT Work to create an image showing AI supporting a learner without replacing the learner’s own voice. Use the online fragment as one source. C needs a visual reminder that a neat summary is not the same as a learner’s full story.",
+      },
+      {
+        institution: "Church",
+        label: "CAMPUS ASSIGNMENT // CES",
+        body: "Use ChatGPT Work to create a downloadable .ics invitation for a CES discussion about using AI without replacing human judgment. Include a clear title and brief description. C needs to turn the toolkit into a conversation people can continue.",
+      },
+    ],
     inputType: "composite",
     fields: [
       { id: "person1Name", label: "Person 1 name", placeholder: "Name" },
@@ -534,16 +561,16 @@ export const puzzles: Puzzle[] = [
     hints: [
       {
         title: "Open the shared workspace",
-        body: "Bring the three people into one ChatGPT Work conversation or workspace. Give it the local fragments and the goal before asking it to create the files.",
+        body: "Bring the three people into one ChatGPT Work conversation or workspace. Give it all three local fragments and the toolkit goal before asking it to create the files.",
       },
       {
         title: "The file assignments",
-        body: "BYU: PowerPoint slide. BYU–Idaho: Word document. BYU–Hawaii: Excel sheet. Ensign College: PDF. BYU-Pathway: image. Church: downloadable .ics invite.",
+        body: "BYU: pros-and-cons classroom slide. BYU–Idaho: three-guideline Word document. BYU–Hawaii: synthetic AI-use, test-score, and understanding Excel sheet. Ensign College: finished-versus-learning PDF. BYU-Pathway: learner-voice image. Church: human-judgment .ics invitation.",
       },
       { title: "The group", body: "Enter three names, three campuses, and three matching file types. Include yourself and two people from outside your campus." },
     ],
     successMessage:
-      "The group is recorded. Three people can now carry three different formats—and a shared piece of the archive—forward.",
+      "The group is recorded. Three campuses can now carry three different pieces of C’s human-centered AI toolkit forward.",
     archiveEntry: archives[5],
     nextStage: "The year 2032 contains an investigation into the pattern.",
   },

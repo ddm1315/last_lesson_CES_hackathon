@@ -21,6 +21,15 @@ export const hashAnswer = (value: string) => {
   return (hash >>> 0).toString(16).padStart(8, '0')
 }
 
+export const isChatGPTSharedLink = (value: string) => {
+  try {
+    const url = new URL(value.trim())
+    return url.protocol === 'https:' && url.hostname === 'chatgpt.com' && /^\/share\/e\/[^/]+(?:\/)?$/.test(url.pathname)
+  } catch {
+    return false
+  }
+}
+
 export const validateAnswer = (puzzle: Puzzle, answer: unknown, participantInstitution?: string) => {
   if (!puzzle.validation) return { valid: false, message: 'This transmission is waiting for a written recommendation.' }
   const validation: PuzzleValidation = puzzle.validation
