@@ -49,6 +49,7 @@ export interface CollaborationValidation {
   campusFields: string[]
   fileTypeFields?: string[]
   responseField?: string
+  responseFields?: string[]
   requireParticipantCampus?: boolean
   fileTypes?: Record<Institution, string>
 }
