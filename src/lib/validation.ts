@@ -49,10 +49,11 @@ export const validateAnswer = (puzzle: Puzzle, answer: unknown, participantInsti
     const names = collaboration.nameFields.map((field) => String(submitted[field] ?? '').trim())
     const campuses = collaboration.campusFields.map((field) => String(submitted[field] ?? '').trim())
     const fileTypes = (collaboration.fileTypeFields ?? []).map((field) => String(submitted[field] ?? '').trim())
-    const response = collaboration.responseField ? String(submitted[collaboration.responseField] ?? '').trim() : ''
+    const responseFields = collaboration.responseFields ?? (collaboration.responseField ? [collaboration.responseField] : [])
+    const responses = responseFields.map((field) => String(submitted[field] ?? '').trim())
 
-    if (names.some((name) => !name) || campuses.some((campus) => !campus) || fileTypes.some((fileType) => !fileType) || (collaboration.responseField && !response)) {
-      return { valid: false, message: 'Complete every name, campus, file type, and response field before continuing.' }
+    if (names.some((name) => !name) || campuses.some((campus) => !campus) || fileTypes.some((fileType) => !fileType) || responses.some((response) => !response)) {
+      return { valid: false, message: 'Complete every name, institution, and reflection field before continuing.' }
     }
 
     if (collaboration.mode === 'same-institution') {
@@ -63,20 +64,22 @@ export const validateAnswer = (puzzle: Puzzle, answer: unknown, participantInsti
       return { valid: true, message: '' }
     }
 
-    const expectedFileTypes = collaboration.fileTypes
-    const filesMatchCampuses = campuses.every((campus, index) => {
-      const institution = Object.keys(expectedFileTypes ?? {}).find((candidate) => normalize(candidate) === normalize(campus))
-      return Boolean(institution && normalize(fileTypes[index]) === normalize(expectedFileTypes?.[institution as keyof typeof expectedFileTypes] ?? ''))
-    })
-    if (!filesMatchCampuses) {
-      return { valid: false, message: 'At least one file type does not match the campus assignment. Check the step 7 brief.' }
+    if (collaboration.fileTypeFields?.length) {
+      const expectedFileTypes = collaboration.fileTypes
+      const filesMatchCampuses = campuses.every((campus, index) => {
+        const institution = Object.keys(expectedFileTypes ?? {}).find((candidate) => normalize(candidate) === normalize(campus))
+        return Boolean(institution && normalize(fileTypes[index]) === normalize(expectedFileTypes?.[institution as keyof typeof expectedFileTypes] ?? ''))
+      })
+      if (!filesMatchCampuses) {
+        return { valid: false, message: 'At least one file type does not match the campus assignment. Check the step 7 brief.' }
+      }
     }
     if (collaboration.requireParticipantCampus && (!participantInstitution || !campuses.some((campus) => normalize(campus) === normalize(participantInstitution)))) {
       return { valid: false, message: 'Include your own campus in the three-person collaboration record.' }
     }
     const otherCampuses = campuses.filter((campus) => normalize(campus) !== normalize(participantInstitution ?? ''))
     if (otherCampuses.length < 2) {
-      return { valid: false, message: 'Step 7 needs two people from outside your campus.' }
+      return { valid: false, message: 'This step needs two people from outside your CES institution.' }
     }
     return { valid: true, message: '' }
   }

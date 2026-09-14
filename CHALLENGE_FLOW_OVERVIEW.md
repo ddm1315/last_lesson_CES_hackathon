@@ -13,7 +13,7 @@ The application does not call an AI service. Participants use approved AI tools 
 1. A participant enters their name and CES institution.
 2. They receive the first damaged message from **C**, a mysterious contact in 2041.
 3. Each completed challenge unlocks the next stage and adds an evidence entry to the Mission Archive.
-4. The work gradually expands from individual prompting to analysis, verification, and collaboration with other CES institutions.
+4. The work gradually expands from individual prompting to analysis, verification, collaboration with other CES institutions, and carefully bounded AI workflows.
 5. The final stage changes from an objective puzzle to a human recommendation for CES.
 
 ## Steps 1–7: Current flow
@@ -127,38 +127,37 @@ The application does not call an AI service. Participants use approved AI tools 
 
 **Story result:** The local fragments become a multi-campus toolkit. The next question is how several reasonable decisions accumulated into a system-wide pattern.
 
-## Steps 8–10: Planned endgame outline
+## Steps 8–10: Endgame flow
 
-These stages are represented in the current V1 content as a working direction. Their wording, evidence, and facilitation details can be refined with the manager and conference team.
+The final stages move the investigation out of the archive and into a real, bounded AI workflow. The uploaded email-hackathon instructions provide the activity context, while the challenge keeps the same emphasis on human review, careful interpretation, and reversible decisions established in Steps 1–7.
 
-### Challenge 8 — The 2032 Investigation
+### Challenge 8 — The Inbox Workflow
 
-**Format:** Codex / advanced analysis
+**Format:** Connected tool / reusable workflows / human review
 
-Participants receive a short case file containing four decisions made between 2027 and 2032. Each decision has a reasonable intended benefit and a hidden tradeoff:
+C finds the first sign of the future problem in ordinary messages. The participant connects an approved Gmail or Outlook tool and works only with a limited, non-sensitive scope such as newsletters, class announcements, club messages, or event planning.
 
-- Automate routine feedback → more faculty time
-- Standardize prompts → more consistent outputs
-- Summarize student thinking → faster advising
-- Optimize completion → fewer unfinished ideas remain visible
+**Participant task:** Create two reusable workflows: one useful, reversible email task such as finding, summarizing, or drafting without sending; and one prioritization workflow that ranks messages using explicit rules. The participant must keep the work reversible and must not send, delete, archive, move, mark as read, or otherwise modify messages.
 
-Participants use AI-assisted analysis, a small table, or a code sketch to sort the events, compare benefits with tradeoffs, and reconstruct the investigation.
+After the activity, the participant talks with two people from other CES institutions and records each person’s name, institution, and one sentence about what that person did or learned.
 
-**Current answer structure:** Investigator/role, first decision year (`2027`), final optimization (`completion`), and the conclusion phrase `no single failure`.
+**What this teaches:** AI can take on a bounded piece of inbox work when the human defines the scope, the rules, and the safety boundary. A useful workflow is still something a person must inspect and explain.
 
-**Intended insight:** There is no single villain or broken technology. A series of reasonable optimizations gradually made the work of thinking harder to see.
+**Story result:** The archive learns that the takeover did not begin with a dramatic command. It began when useful delegation became easier than deliberate review.
 
-### Challenge 9 — The Five Archives
+### Challenge 9 — The Inbox Takeover
 
-**Format:** Orchestration / people + sources + AI
+**Format:** Agent workflow / testing / human approval
 
-The participant’s archive is incomplete. They must gather distinct institution fragments from other attendees and use AI to map the evidence, identify the shared conclusion, and name what the records cannot measure.
+The two workflows become the first draft of C’s inbox agent. The participant builds or saves an agent-style workflow that searches only within a user-provided topic, sender, label, or date range; identifies requested actions, deadlines, impact, and missing information; ranks messages; and prepares a draft for the highest-priority response when appropriate.
 
-**Target response:** Five groups represented, `no rogue AI`, and `human judgment` as the missing measure.
+**Participant task:** Test the agent on a new email scope, review its output, and improve at least one instruction. The agent may analyze and draft, but it must never send, delete, archive, move, mark as read, or otherwise modify email automatically. Human approval is required before any external action.
 
-**Intended insight:** The evidence points away from a rogue AI or singular technical failure. The missing element is human judgment: what educators and learners value, why it matters, and how to recognize it.
+The participant then talks with a new pair of people from other CES institutions and records each person’s name, institution, and one sentence about what that person did or learned.
 
-**Planning note:** The broader story refers to all six CES groups, while the current V1 challenge validates five distinct groups. This count should be confirmed during content refinement so the in-person instructions and the application use the same requirement.
+**What this teaches:** An agent is not trustworthy because it sounds confident. It is trustworthy when its scope, priorities, uncertainty, and limits are visible—and when a human remains responsible for the final action.
+
+**Story result:** C’s records reveal that the “takeover” was never one machine seizing control. It was a series of small permissions that people stopped revisiting.
 
 ### Challenge 10 — The Last Lesson
 
@@ -186,7 +185,7 @@ Participants write a specific recommendation for what CES should do in 2026 to e
 
 The challenge intentionally moves through this sequence:
 
-`chatbot → context → vision → file analysis → structured analysis → shared work → collaboration → advanced analysis → orchestration → human judgment`
+`chatbot → context → vision → file analysis → structured analysis → shared work → collaboration → reusable workflow → agent testing → human judgment`
 
 The central message is that AI is more than a chatbot, but it is not a substitute for the human decisions that define meaningful education.
 
@@ -199,4 +198,3 @@ The central message is that AI is more than a chatbot, but it is not a substitut
 - Mission Archive entries preserve the major discoveries as participants advance.
 - Participant identity, progress, answers, hints, and the final recommendation use versioned `localStorage`.
 - There is no backend, authentication, analytics, or AI API integration in this version.
-
