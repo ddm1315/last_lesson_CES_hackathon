@@ -8,27 +8,55 @@ import { INSTITUTION_FILE_TYPES, INSTITUTIONS } from './types'
 const PROGRESSIVE_HINT_COUNT = 2
 
 type View = 'mission' | 'evidence' | 'about'
+type Theme = 'dark' | 'light'
 const isDevMode = import.meta.env.DEV && new URLSearchParams(window.location.search).get('dev') === '1'
+const THEME_STORAGE_KEY = 'the-last-lesson:theme'
 
-const Icon = ({ name }: { name: 'arrow' | 'book' | 'check' | 'lock' | 'spark' | 'reset' | 'close' }) => {
-  const paths: Record<string, string> = { arrow: 'M5 12h14m-6-6 6 6-6 6', book: 'M5 5.5A2.5 2.5 0 0 1 7.5 3H19v17H7.5A2.5 2.5 0 0 0 5 22V5.5Zm0 0V22', check: 'm5 12 4 4L19 6', lock: 'M7 10V7a5 5 0 0 1 10 0v3m-12 0h14v10H5V10Z', spark: 'm12 3 1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8L12 3Z', reset: 'M4 12a8 8 0 1 0 2.3-5.7M4 5v7h7', close: 'M6 6l12 12M18 6 6 18' }
+const Icon = ({ name }: { name: 'arrow' | 'book' | 'check' | 'lock' | 'spark' | 'reset' | 'close' | 'sun' | 'moon' }) => {
+  const paths: Record<string, string> = { arrow: 'M5 12h14m-6-6 6 6-6 6', book: 'M5 5.5A2.5 2.5 0 0 1 7.5 3H19v17H7.5A2.5 2.5 0 0 0 5 22V5.5Zm0 0V22', check: 'm5 12 4 4L19 6', lock: 'M7 10V7a5 5 0 0 1 10 0v3m-12 0h14v10H5V10Z', spark: 'm12 3 1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8L12 3Z', reset: 'M4 12a8 8 0 1 0 2.3-5.7M4 5v7h7', close: 'M6 6l12 12M18 6 6 18', sun: 'M12 3v2m0 14v2M3 12h2m14 0h2m-3.4-6.6 1.4-1.4M6 18l-1.4 1.4m0-14.8L6 6m12 12 1.4 1.4M16 12a4 4 0 1 1-8 0 4 4 0 0 1 8 0Z', moon: 'M20.5 14.5A8.5 8.5 0 0 1 9.5 3.5 8.5 8.5 0 1 0 20.5 14.5Z' }
   return <svg viewBox="0 0 24 24" aria-hidden="true"><path d={paths[name]} /></svg>
+}
+
+const readTheme = (): Theme => {
+  try {
+    return localStorage.getItem(THEME_STORAGE_KEY) === 'dark' ? 'dark' : 'light'
+  } catch {
+    return 'light'
+  }
+}
+
+document.documentElement.dataset.theme = readTheme()
+
+function ThemeToggle({ theme, onToggle }: { theme: Theme; onToggle: () => void }) {
+  const nextTheme = theme === 'dark' ? 'light' : 'dark'
+  return <button className="theme-toggle" type="button" onClick={onToggle} aria-label={`Switch to ${nextTheme} mode`} aria-pressed={theme === 'light'}>
+    <span className="theme-toggle-icon"><Icon name={theme === 'dark' ? 'sun' : 'moon'} /></span>
+    <span className="theme-toggle-copy"><strong>{theme === 'dark' ? 'Dark mode' : 'Light mode'}</strong><small>Switch to {nextTheme}</small></span>
+  </button>
 }
 
 function App() {
   const [game, setGame] = useState<GameState | null>(() => readGameState())
   const [view, setView] = useState<View>('mission')
   const [devOpen, setDevOpen] = useState(isDevMode)
+  const [theme, setTheme] = useState<Theme>(() => readTheme())
 
   useEffect(() => { if (game) writeGameState(game) }, [game])
+  useEffect(() => {
+    document.documentElement.dataset.theme = theme
+    document.querySelector('meta[name="theme-color"]')?.setAttribute('content', theme === 'light' ? '#f7faf9' : '#101519')
+    try { localStorage.setItem(THEME_STORAGE_KEY, theme) } catch { /* Storage may be unavailable in private browsing. */ }
+  }, [theme])
 
-  if (!game) return <Onboarding onComplete={(name, institution) => setGame(createGameState(createParticipant(name, institution)))} />
+  const toggleTheme = () => setTheme((current) => current === 'dark' ? 'light' : 'dark')
+
+  if (!game) return <Onboarding theme={theme} onToggleTheme={toggleTheme} onComplete={(name, institution) => setGame(createGameState(createParticipant(name, institution)))} />
 
   const update = (mutator: (state: GameState) => GameState) => setGame((current) => current ? mutator({ ...current, lastSavedAt: new Date().toISOString() }) : current)
   const reset = () => { clearGameState(); setGame(null); setView('mission') }
 
   return <div className="app-shell flex min-h-screen flex-col">
-    <TopBar game={game} view={view} onNavigate={setView} onReset={reset} />
+    <TopBar game={game} view={view} theme={theme} onToggleTheme={toggleTheme} onNavigate={setView} onReset={reset} />
     <main className="page-wrap grow">
       {view === 'mission' && <Mission game={game} update={update} onNavigate={setView} />}
       {view === 'evidence' && <Evidence game={game} update={update} />}
@@ -38,10 +66,11 @@ function App() {
   </div>
 }
 
-function Onboarding({ onComplete }: { onComplete: (name: string, institution: Institution) => void }) {
+function Onboarding({ theme, onToggleTheme, onComplete }: { theme: Theme; onToggleTheme: () => void; onComplete: (name: string, institution: Institution) => void }) {
   const [name, setName] = useState('')
   const [institution, setInstitution] = useState<Institution | ''>('')
   return <div className="onboarding min-h-screen">
+    <div className="onboarding-tools"><ThemeToggle theme={theme} onToggle={onToggleTheme} /></div>
     <div className="onboarding-art"><div className="signal-orbit orbit-one" /><div className="signal-orbit orbit-two" /><div className="evidence-seal"><span>2041</span><strong>CASE FILE<br />OPEN</strong></div><div className="vertical-label">CES // FUTURE EVIDENCE</div></div>
     <section className="onboarding-card">
       <div className="eyebrow"><span className="status-dot" /> Emergency transmission · 2041</div>
@@ -59,12 +88,12 @@ function Onboarding({ onComplete }: { onComplete: (name: string, institution: In
   </div>
 }
 
-function TopBar({ game, view, onNavigate, onReset }: { game: GameState; view: View; onNavigate: (view: View) => void; onReset: () => void }) {
+function TopBar({ game, view, theme, onToggleTheme, onNavigate, onReset }: { game: GameState; view: View; theme: Theme; onToggleTheme: () => void; onNavigate: (view: View) => void; onReset: () => void }) {
   const progress = game.completedSteps.length
   return <header className="top-bar">
     <button className="brand" onClick={() => onNavigate('mission')} aria-label="Return to mission"><span className="brand-mark">C</span><span><strong>THE LAST LESSON</strong><small>CES AI CHALLENGE</small></span></button>
     <nav className="primary-nav" aria-label="Primary navigation"><button className={view === 'mission' ? 'active' : ''} onClick={() => onNavigate('mission')}>Mission</button><button className={view === 'evidence' ? 'active' : ''} onClick={() => onNavigate('evidence')}>Evidence <span className="nav-count">{progress}</span></button><button className={view === 'about' ? 'active' : ''} onClick={() => onNavigate('about')}>About</button></nav>
-    <div className="participant-chip"><span className="mini-avatar">{game.participant.name.charAt(0).toUpperCase()}</span><span className="participant-name">{game.participant.name}</span><button className="reset-link" onClick={() => { if (window.confirm('Reset this investigation and erase all local progress?')) onReset() }} aria-label="Reset local progress"><Icon name="reset" /></button></div>
+    <div className="participant-chip"><ThemeToggle theme={theme} onToggle={onToggleTheme} /><span className="mini-avatar">{game.participant.name.charAt(0).toUpperCase()}</span><span className="participant-name">{game.participant.name}</span><button className="reset-link" onClick={() => { if (window.confirm('Reset this investigation and erase all local progress?')) onReset() }} aria-label="Reset local progress"><Icon name="reset" /></button></div>
   </header>
 }
 
