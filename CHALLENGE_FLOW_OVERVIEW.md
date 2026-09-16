@@ -20,18 +20,18 @@ The application does not call an AI service. Participants use approved AI tools 
 
 ## Challenge summary
 
-| Step | Key thing it teaches / asks the participant to do | Input or keywords |
+| Step | AI skill practiced | Input or keywords |
 | --- | --- | --- |
-| 1 | Identify the encoding, decode the transmission, and separate known facts from inferences. | `2041`, `corrupt`, `library` |
-| 2 | Inspect the entire image—including the sky and clouds—for hidden information. | `Log in to LMS` |
-| 3 | Generate and upload a cute puppy in a sunlit meadow. | Generated puppy image |
-| 4 | Upload the grade CSV and identify the major trend and conclusion. | `Grades increase over time` |
-| 5 | Parse the JSON, group entries by mood, and count each mood. | `49`; reflective is most common |
-| 6 | Have a short ChatGPT conversation, exchange share links with someone else, and ask about what they discussed. | Your conversation share link |
-| 7 | Build assigned files with a three-person, cross-campus group. | Names, campuses, and matching file types for all three participants |
-| 8 | Use the ChatGPT ecosystem to recreate a bounded inbox skill from a 2032 case file. | Two collaborators’ names, institutions, and learning summaries |
-| 9 | Turn the bounded skill into a carefully limited agent and test its stopping point. | Two collaborators’ details and learning summaries |
-| 10 | Learn who has been communicating from the future, understand the catastrophe, and write an email to Cosmo explaining what CES will do with AI in 2026. | Email to Cosmo; share it in the hackathon debrief |
+| 1 | Text-input chat | `2041`, `corrupt`, `library` |
+| 2 | Multimodal chat | `Log in to LMS` |
+| 3 | Generate an image | Generated puppy image |
+| 4 | Analyze a dataset | `Grades increase over time` |
+| 5 | Analyze structured data | `49`; reflective is most common |
+| 6 | Share and compare AI conversations | Your conversation share link |
+| 7 | Create files collaboratively | Names, campuses, and matching file types for all three participants |
+| 8 | Create a skill | Two collaborators’ names, institutions, and learning summaries |
+| 9 | Build an agent | Two collaborators’ details and learning summaries |
+| 10 | Apply human judgment with AI | Email to Cosmo; share it in the hackathon debrief |
 
 ## Steps 1–7: Current flow
 
