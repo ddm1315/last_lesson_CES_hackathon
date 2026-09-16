@@ -10,7 +10,7 @@ export const INSTITUTION_FILE_TYPES: Record<Institution, string> = {
   Church: 'Downloadable .ics invite',
 }
 
-export type ResourceKind = 'text' | 'quote' | 'notes' | 'reflection' | 'message' | 'data' | 'fragment' | 'image' | 'download'
+export type ResourceKind = 'text' | 'quote' | 'notes' | 'reflection' | 'message' | 'data' | 'image' | 'download'
 export type InputType = 'text' | 'textarea' | 'code' | 'composite' | 'image-upload'
 export type ValidationStrategy = 'normalized' | 'hashed' | 'composite' | 'collaboration' | 'group-collaboration'
 
@@ -113,7 +113,5 @@ export interface GameState {
   revealedHints: Record<string, number[]>
   archiveEntries: string[]
   viewedArchiveEntries: string[]
-  finalRecommendation?: string
-  finalSubmittedAt?: string
   lastSavedAt: string
 }

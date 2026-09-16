@@ -207,11 +207,11 @@ The progression is approximately:
 
 Basic AI prompting.
 
-### Step 2 — Context
+### Step 2 — Context and Vision
 
 Providing better context and structured instructions.
 
-### Step 3 — Vision
+### Step 3 — Image Generation
 
 Giving AI images, screenshots, photographs, or other visual information.
 
@@ -219,11 +219,11 @@ Giving AI images, screenshots, photographs, or other visual information.
 
 Working with longer documents or collections of information.
 
-### Step 5 — Synthesis
+### Step 5 — Structured Analysis
 
 Combining multiple sources and perspectives.
 
-### Step 6 — Verification
+### Step 6 — Shared Conversations and Human Review
 
 Recognizing contradictions, hallucinations, unsupported claims, and the need to verify AI output.
 
@@ -231,11 +231,11 @@ Recognizing contradictions, hallucinations, unsupported claims, and the need to 
 
 Combining information held by different people/institutions.
 
-### Step 8 — Codex / Advanced Analysis
+### Step 8 — ChatGPT Ecosystem / Skill Building
 
 Using AI-assisted coding to analyze information or build a small tool.
 
-### Step 9 — Orchestration
+### Step 9 — Agent Creation and Human Approval
 
 Using multiple AI capabilities, people, and sources to solve a difficult problem.
 
@@ -257,24 +257,17 @@ There are no assigned teams.
 
 However, later puzzles require participants to physically collaborate with conference attendees.
 
-Rough progression:
+Canonical V1 progression:
 
 **Steps 1–5:** Can be completed individually.
 
-**Step 6:** Requires information from another attendee from the participant's own CES institution.
+**Step 6:** Requires one human checkpoint. Participants share a short ChatGPT conversation with another person, exchange perspectives, and compare what they explored. A same-institution match is not required in V1.
 
-**Step 7:** Requires collaboration with someone from a different CES institution.
+**Step 7:** Requires a small three-person group: the participant plus two people from outside the participant's institution. The group creates a small, cross-campus toolkit.
 
-**Step 8:** May require information from multiple attendees/institutions.
+**Step 8:** Requires two lightweight reflections from people at other CES institutions after recreating a bounded inbox skill with ChatGPT tools.
 
-**Step 9:** Requires collaboration involving all six CES groups:
-
-* BYU
-* BYU–Idaho
-* BYU–Hawaii
-* Ensign College
-* BYU-Pathway
-* Church
+**Step 9:** Requires a new pair of lightweight reflections from people at other CES institutions after testing a bounded inbox agent.
 
 **Step 10:** Participants make their own final recommendation after learning from the collaboration.
 
@@ -282,31 +275,19 @@ The application does NOT need to digitally connect participants.
 
 Collaboration happens in person.
 
-The story should naturally reveal why another person's information is required.
+The story should naturally reveal why another person's information is required. These are lightweight, honor-system collaboration records rather than intensive proof.
 
 Example:
 
 > TRANSMISSION INCOMPLETE
 >
-> Your archive does not contain the information required to continue.
->
-> Records indicate another member of your institution received a complementary fragment.
+> C’s archive contains the next clue, but the investigation needs another person’s perspective.
 
 Later:
 
-> ACCESS DENIED
+> CROSS-CAMPUS REQUEST
 >
-> Your institution does not possess the required archive.
->
-> Find someone from another CES institution.
-
-And eventually:
-
-> Five archives were created.
->
-> No institution received more than one.
->
-> You will need all five.
+> C needs a small group to build the missing piece together.
 
 Build the content system so we can display different evidence or puzzle variants depending on the participant's selected institution.
 
@@ -320,47 +301,37 @@ For V1, implement placeholder content around this progression.
 
 Decode the first damaged transmission from 2041. this can be a message that is given in binary or a combination of text, binary, hex etc. 
 
-### 2. The Forgotten Lesson
+### 2. The Hidden Clue
 
-Reconstruct fragments from a professor's lesson or notes.
+Inspect a 2026 CES All Hands attachment and find the hidden instruction pointing to the LMS.
 
-### 3. Through Cosmo's Eyes
+### 3. The Bot Detection
 
-Use visual information to investigate a clue.
+Generate and upload a puppy image to pass the LMS security experiment.
 
-### 4. The Student
+### 4. The Gradebook
 
-Analyze a fictional student's academic journey and discover something unusual.
+Analyze a 2025–2040 grade export and notice that grades rise without proving deeper learning.
 
-### 5. Two Sides of the Story
+### 5. The Instructor’s Notes
 
-Compare student and professor perspectives.
+Analyze the professor’s structured journal and identify the most common mood.
 
-### 6. Who Do You Believe?
+### 6. The Human Check
 
-Evaluate conflicting evidence and determine which claims are actually supported.
+Share a short ChatGPT conversation with another person and compare perspectives before accepting the next clue.
 
-Requires another person from the same institution.
+### 7. Build the Missing Piece
 
-### 7. The Other Campus
+Create a small toolkit with two people from outside the participant’s institution.
 
-Discover that another CES institution has a different perspective on the same event.
+### 8. The Inbox Skill
 
-Requires cross-institution collaboration.
+Recreate a bounded inbox skill from a 2032 case file using the ChatGPT tools available to the participant.
 
-### 8. The 2032 Investigation
+### 9. The Inbox Agent
 
-Reconstruct an earlier investigation into what was happening to teaching and learning.
-
-This is a good location for limited Codex/AI-assisted coding use.
-
-### 9. The Five Archives
-
-All five CES institutions possess different pieces of the final evidence.
-
-Participants must collaborate across all five groups.
-
-This should eventually reveal that there was no rogue AI or singular technical failure.
+Turn the bounded skill into an agent, test its stopping point, and require human approval.
 
 ### 10. The Last Lesson
 
@@ -378,9 +349,7 @@ Instead, participants receive a final transmission:
 >
 > What should CES do in 2026 to ensure AI strengthens thinking, teaching, and learning rather than replacing them?
 
-Allow approximately 500 characters.
-
-Store the response in `localStorage`.
+Allow approximately 500 characters. The V1 response is intentionally not stored; participants bring it to the debrief.
 
 After submission, show a strong ending state.
 
@@ -480,11 +449,12 @@ Example:
 
 * ✓ Emergency transmission received
 * ✓ Identity of "C" discovered
-* ✓ Professor's lesson reconstructed
-* ✓ Student record recovered
-* ✓ First contradiction discovered
-* ○ 2032 investigation
-* ○ Five Archives
+* ✓ Professor's study journal recovered
+* ✓ Student grade trend recovered
+* ✓ Human checkpoint established
+* ○ Cross-campus toolkit
+* ○ 2032 inbox case file
+* ○ Final Transmission
 * ○ Final Transmission
 
 Completed entries may be opened to review important information.

@@ -24,7 +24,8 @@ export const hashAnswer = (value: string) => {
 export const isChatGPTSharedLink = (value: string) => {
   try {
     const url = new URL(value.trim())
-    return url.protocol === 'https:' && url.hostname === 'chatgpt.com' && /^\/share\/e\/[^/]+(?:\/)?$/.test(url.pathname)
+    const supportedHost = url.hostname === 'chatgpt.com' || url.hostname === 'www.chatgpt.com' || url.hostname === 'chat.openai.com'
+    return url.protocol === 'https:' && supportedHost && /^\/share\/(?:e\/)?[^/]+(?:\/)?$/.test(url.pathname)
   } catch {
     return false
   }
@@ -35,7 +36,7 @@ export const validateAnswer = (puzzle: Puzzle, answer: unknown, participantInsti
   const validation: PuzzleValidation = puzzle.validation
   if (validation.strategy === 'normalized') {
     const value = normalize(String(answer ?? ''))
-    return { valid: validation.acceptedAnswers?.some((accepted) => matchesNormalizedAnswer(value, accepted)) ?? false, message: 'That does not match the archive. Try separating the evidence from your first interpretation.' }
+    return { valid: validation.acceptedAnswers?.some((accepted) => matchesNormalizedAnswer(value, accepted)) ?? false, message: 'That does not match the evidence. Try separating the facts from your first interpretation.' }
   }
   if (validation.strategy === 'hashed') {
     const value = hashAnswer(String(answer ?? ''))
@@ -92,7 +93,7 @@ export const validateAnswer = (puzzle: Puzzle, answer: unknown, participantInsti
     const normalizedExpected = normalize(containsPattern ? expected.slice(1, -1) : expected)
     return containsPattern ? actual.includes(normalizedExpected) : normalizedExpected === actual
   })) ?? false
-  return { valid: matches, message: 'The archive is missing one connection. Check each field against the evidence and try again.' }
+  return { valid: matches, message: 'The evidence is missing one connection. Check each field against the records and try again.' }
 }
 
 export { normalize }

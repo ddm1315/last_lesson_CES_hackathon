@@ -6,15 +6,32 @@
 
 Participants investigate an emergency transmission from **2041**. At first, the situation could be interpreted as an AI security incident or a rogue system. As they work through the evidence, they discover a more subtle problem: CES became increasingly effective at producing educational outputs while losing sight of human thinking, judgment, and connection.
 
-The application does not call an AI service. Participants use approved AI tools outside the application, then submit answers or evidence back into the challenge. Progress, answers, hints, and the mission archive are saved locally on the participant’s device.
+C is not sending the participant through a literal sequence of events in time. C is transmitting recovered records from 2026–2041 so the participant can reconstruct how dependence on AI grew gradually. The dates on the records are evidence anchors; the investigation itself is happening now.
+
+The application does not call an AI service. Participants use approved AI tools outside the application, then submit answers or evidence back into the challenge. Progress, answers, hints, and the mission evidence log are saved locally on the participant’s device; the Step 10 response is not saved.
 
 ## Overall participant flow
 
 1. A participant enters their name and CES institution.
 2. They receive the first damaged message from **C**, a mysterious contact in 2041.
-3. Each completed challenge unlocks the next stage and adds an evidence entry to the Mission Archive.
+3. Each completed challenge unlocks the next stage and adds an evidence entry to Mission Evidence.
 4. The work gradually expands from individual prompting to analysis, verification, collaboration with other CES institutions, and carefully bounded AI workflows.
 5. The final stage changes from an objective puzzle to a human recommendation for CES.
+
+## Challenge summary
+
+| Step | Key thing it teaches / asks the participant to do | Input or keywords |
+| --- | --- | --- |
+| 1 | Identify the encoding, decode the transmission, and separate known facts from inferences. | `2041`, `corrupt`, `library` |
+| 2 | Inspect the entire image—including the sky and clouds—for hidden information. | `Log in to LMS` |
+| 3 | Generate and upload a cute puppy in a sunlit meadow. | Generated puppy image |
+| 4 | Upload the grade CSV and identify the major trend and conclusion. | `Grades increase over time` |
+| 5 | Parse the JSON, group entries by mood, and count each mood. | `49`; reflective is most common |
+| 6 | Have a short ChatGPT conversation, exchange share links with someone else, and ask about what they discussed. | Your conversation share link |
+| 7 | Build assigned files with a three-person, cross-campus group. | Names, campuses, and matching file types for all three participants |
+| 8 | Use the ChatGPT ecosystem to recreate a bounded inbox skill from a 2032 case file. | Two collaborators’ names, institutions, and learning summaries |
+| 9 | Turn the bounded skill into a carefully limited agent and test its stopping point. | Two collaborators’ details and learning summaries |
+| 10 | Learn who has been communicating from the future, understand the catastrophe, and write an email to Cosmo explaining what CES will do with AI in 2026. | Email to Cosmo; share it in the hackathon debrief |
 
 ## Steps 1–7: Current flow
 
@@ -78,7 +95,7 @@ The application does not call an AI service. Participants use approved AI tools 
 
 **Format:** Structured data analysis / synthesis
 
-**Story:** An instructor-notes export contains 200 entries from Professor Elaine Hart’s study journal. The entries record research, teaching, student interactions, and changing moods.
+**Story:** An instructor-notes export contains 200 entries from Professor Elaine Hart’s study journal, covering 2026–2041. The record stays within the period C is asking the participant to reconstruct and records research, teaching, student interactions, and changing moods.
 
 **Participant task:** Ask AI to parse the JSON, group entries by mood, and count each mood rather than requesting only a general summary.
 
@@ -86,29 +103,35 @@ The application does not call an AI service. Participants use approved AI tools 
 
 **What this teaches:** Participants practice giving AI a specific analytical job and checking a result against the underlying structured data.
 
-**Story result:** The journal shows a growing pattern around AI, student work, and the pressure to produce. The archive now asks what can actually be believed from the evidence.
+**Story result:** The journal shows a growing pattern around AI, student work, and the pressure to produce. The investigation now asks what can actually be believed from the evidence.
 
-### Challenge 6 — Open a Shared Project
+### Challenge 6 — Share the Conversation
 
-**Format:** Work / verification / same-institution collaboration
+**Format:** ChatGPT conversation sharing / verification / peer exchange
 
-**Story:** C’s message says the investigation should not remain on one person’s device. The participant’s own CES institution holds a local perspective that needs another person’s review.
+**Story:** C’s message says the investigation should not remain isolated with one person. The participant must share a small piece of their thinking with someone else and learn what that person explored. This is the first human checkpoint: the participant is asked to compare an AI conversation with another person’s perspective before moving on.
 
-**Participant task:** Find one collaborator from the same CES institution, create a shared ChatGPT Work project, invite the collaborator, add C’s message as context, and submit the project link.
+**Participant task:** Have a quick conversation with ChatGPT using one of the prompts below, or a similar prompt. Then click ChatGPT’s **Share** button and send the conversation to someone else. Ask that person to share their conversation link with you as well, then talk about what they discussed and compare the differences or similarities between the two conversations.
 
-**Expected submission:** A shared project link. The current V1 records the link for the activity but does not validate its contents.
+**Prompt examples:**
 
-**What this teaches:** AI work benefits from shared context and human review. Collaboration is introduced before the story requires cross-campus coordination.
+- Explain the differences between ChatGPT agents, plugins, skills, and projects using an analogy.
+- Give me three examples of tasks where AI should assist a person but should not make the final decision. Explain why.
+- Imagine a student uses AI to complete an assignment. Give me three questions an instructor could ask to determine whether the student still understands the material.
 
-**Story result:** The participant receives an institution-specific fragment, such as reduced office-hour questions, less visible student revision, or increasingly summarized learner voice.
+**Expected submission:** The participant’s ChatGPT conversation share link. The other person’s link is exchanged for discussion but is not required by the activity. The current V1 checks that the submitted value looks like a ChatGPT Share link, but does not validate its contents.
+
+**What this teaches:** Sharing an AI conversation makes the reasoning and context visible to another person. Participants practice comparing questions, answers, and perspectives instead of treating an AI response as a private endpoint.
+
+**Story result:** The participant receives another person’s perspective on AI and learning. The exchange adds a human checkpoint before the investigation moves into cross-campus collaboration.
 
 ### Challenge 7 — Build the Missing Piece
 
 **Format:** Work / collaboration / file creation
 
-**Story:** C no longer wants another abstract summary. C asks for a practical human-centered AI toolkit assembled from local evidence.
+**Story:** C no longer wants another abstract summary. C asks for a practical human-centered AI toolkit assembled by a small group of people from across CES.
 
-**Participant task:** Create a three-person group: the participant plus two people from outside their campus. Bring the group’s local fragments into one shared workspace and create the assigned files.
+**Participant task:** Create a three-person group: the participant plus two people from outside their campus. Bring the group together in one shared workspace and create the assigned files.
 
 **Institution-specific assignments:**
 
@@ -125,45 +148,47 @@ The application does not call an AI service. Participants use approved AI tools 
 
 **What this teaches:** AI can help create different kinds of work products, but the quality and purpose of those products depend on human judgment and collaboration.
 
-**Story result:** The local fragments become a multi-campus toolkit. The next question is how several reasonable decisions accumulated into a system-wide pattern.
+**Story result:** Three contributions become the first version of a multi-campus toolkit. C’s next record moves the investigation from visible outputs to the ordinary shortcuts that shaped behavior.
 
 ## Steps 8–10: Endgame flow
 
-The final stages move the investigation out of the archive and into a real, bounded AI workflow. The uploaded email-hackathon instructions provide the activity context, while the challenge keeps the same emphasis on human review, careful interpretation, and reversible decisions established in Steps 1–7.
+The final stages move the investigation from reviewing records into bounded AI workflows performed with the ChatGPT tools available to the participant. Depending on the participant’s account, that may include a conversation, Project, Skill, Agent, or Outlook app/connector. The challenge does not require live email access; a mock inbox or facilitator demo path can be used. The same emphasis on human review, careful interpretation, and reversible decisions continues.
 
-### Challenge 8 — The Inbox Workflow
+### Challenge 8 — The Inbox Skill
 
-**Format:** Connected tool / reusable workflows / human review
+**Format:** ChatGPT ecosystem / skill building / human review
 
-C finds the first sign of the future problem in ordinary messages. The participant connects an approved Gmail or Outlook tool and works only with a limited, non-sensitive scope such as newsletters, class announcements, club messages, or event planning.
+C sends a 2032 case file showing the first sign of the future problem in ordinary messages. Nothing is broken. Nothing is dramatic. Someone simply gave an AI system a little work to do, then a little more. The participant recreates a small version of that workflow with the ChatGPT tools available to them.
 
-**Participant task:** Create two reusable workflows: one useful, reversible email task such as finding, summarizing, or drafting without sending; and one prioritization workflow that ranks messages using explicit rules. The participant must keep the work reversible and must not send, delete, archive, move, mark as read, or otherwise modify messages.
+**Participant task:** Use a ChatGPT Project, Skill, Agent, or Outlook app/connector—whichever is available—to build a read-only skill for a limited, non-sensitive inbox scope. If live email access is unavailable, use a mock inbox. Do not allow the skill to send, delete, archive, move, mark as read, or otherwise change any messages.
 
 After the activity, the participant talks with two people from other CES institutions and records each person’s name, institution, and one sentence about what that person did or learned.
 
-**What this teaches:** AI can take on a bounded piece of inbox work when the human defines the scope, the rules, and the safety boundary. A useful workflow is still something a person must inspect and explain.
+**What this teaches:** A skill can make a repeated task easier, but connecting a tool does not mean giving it control. The participant practices setting a clear safety boundary and reviewing what AI suggests.
 
-**Story result:** The archive learns that the takeover did not begin with a dramatic command. It began when useful delegation became easier than deliberate review.
+**Story result:** The investigation shows how the takeover could begin without a dramatic command: useful delegation became easier than deliberate review.
 
-### Challenge 9 — The Inbox Takeover
+### Challenge 9 — The Inbox Agent
 
-**Format:** Agent workflow / testing / human approval
+**Format:** Agent creation / email management / human approval
 
-The two workflows become the first draft of C’s inbox agent. The participant builds or saves an agent-style workflow that searches only within a user-provided topic, sender, label, or date range; identifies requested actions, deadlines, impact, and missing information; ranks messages; and prepares a draft for the highest-priority response when appropriate.
+The bounded inbox skill becomes the first draft of C’s inbox agent. The participant creates an agent that helps manage email and tests whether it knows where to stop.
 
-**Participant task:** Test the agent on a new email scope, review its output, and improve at least one instruction. The agent may analyze and draft, but it must never send, delete, archive, move, mark as read, or otherwise modify email automatically. Human approval is required before any external action.
+**Participant task:** Use the bounded inbox skill as a starting point for a ChatGPT Agent. Test it on a limited, non-sensitive scope, review what it does, and improve at least one instruction. The agent may analyze and draft, but it must never send, delete, archive, move, mark as read, or otherwise modify email automatically. Human approval is required before any external action.
 
 The participant then talks with a new pair of people from other CES institutions and records each person’s name, institution, and one sentence about what that person did or learned.
 
 **What this teaches:** An agent is not trustworthy because it sounds confident. It is trustworthy when its scope, priorities, uncertainty, and limits are visible—and when a human remains responsible for the final action.
 
-**Story result:** C’s records reveal that the “takeover” was never one machine seizing control. It was a series of small permissions that people stopped revisiting.
+**Story result:** C’s records reveal that the “takeover” was never one machine seizing control. It was a series of small permissions and convenient shortcuts that people stopped revisiting.
 
 ### Challenge 10 — The Last Lesson
 
 **Format:** Human judgment / values in action
 
-The objective answer disappears. C sends one final message:
+The objective answer disappears. C reveals that the sender is **Cosmo the Cougar**, communicating from the future. Cosmo explains that the catastrophe was not a rogue machine: students forgot how to learn and began using AI for everything.
+
+C sends one final message:
 
 > You know what happened to us.
 >
@@ -173,9 +198,11 @@ The objective answer disappears. C sends one final message:
 >
 > I’m asking you.
 
-Participants write a specific recommendation for what CES should do in 2026 to ensure AI strengthens thinking, teaching, and learning rather than replacing them. The response should name a practice, boundary, or question that can be acted on; it is not graded against a password.
+**Participant task:** Write an email to Cosmo in the future explaining what CES will do with AI in 2026. In the email, answer this question: **How can we effectively and safely use AI going forward?** Include a specific practice, boundary, or question CES can act on. The response is not saved; bring your thoughts to the hackathon debrief.
 
-**Intended ending:** The recommendation is stored locally and the experience closes with:
+The sender is finally identified: **C is Cosmo the Cougar**.
+
+**Intended ending:** The participant’s email to Cosmo is ready for the hackathon debrief and the experience closes with:
 
 > TRANSMISSION RECEIVED
 >
@@ -185,7 +212,7 @@ Participants write a specific recommendation for what CES should do in 2026 to e
 
 The challenge intentionally moves through this sequence:
 
-`chatbot → context → vision → file analysis → structured analysis → shared work → collaboration → reusable workflow → agent testing → human judgment`
+`chatbot → context → vision → file analysis → structured analysis → shared work → collaboration → skill building → agent creation → human judgment`
 
 The central message is that AI is more than a chatbot, but it is not a substitute for the human decisions that define meaningful education.
 
@@ -195,6 +222,6 @@ The central message is that AI is more than a chatbot, but it is not a substitut
 - The application uses reusable rendering and validation rather than one hard-coded page per challenge.
 - Steps unlock sequentially.
 - Hints are progressive and are saved locally without penalizing participants.
-- Mission Archive entries preserve the major discoveries as participants advance.
-- Participant identity, progress, answers, hints, and the final recommendation use versioned `localStorage`.
+- Mission Evidence entries preserve the major discoveries as participants advance.
+- Participant identity, progress, answers, hints, and share links use versioned `localStorage`; the Step 10 response is not saved.
 - There is no backend, authentication, analytics, or AI API integration in this version.
