@@ -24,7 +24,7 @@ jobs:
     timeout-minutes: 90
     runs-on: [openshift-ocp-oit]
     env:
-      IMAGE_NAME: quay.byu.edu/ces/hackathon
+      IMAGE_NAME: quay.byu.edu/oit/ces-hackathon
     steps:
       - name: Setup git
         run: sudo apt-get update && sudo apt-get install -y git
